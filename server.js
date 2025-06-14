@@ -32,6 +32,14 @@ app.use(xss());
 app.use(hpp());
 
 // routes
+// health check endpoint
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Server is running",
+  });
+});
+
 app.use("/api/v1/users", usersRoutes);
 
 // 404 error handler , always put it after all the routes
